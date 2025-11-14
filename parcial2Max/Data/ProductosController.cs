@@ -16,7 +16,7 @@ namespace parcial2Max.Controllers
             _context = context;
         }
 
-        // 1 - Listar productos
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Producto>>> GetProductos()
         {
@@ -26,7 +26,7 @@ namespace parcial2Max.Controllers
                 .ToListAsync();
         }
 
-        // 2 - Crear producto
+       
         [HttpPost]
         public async Task<ActionResult<Producto>> CrearProducto(Producto producto)
         {
@@ -36,7 +36,7 @@ namespace parcial2Max.Controllers
             return CreatedAtAction(nameof(GetProductoPorId), new { id = producto.Id }, producto);
         }
 
-        // 3 - Editar producto
+        
         [HttpPut("{id}")]
         public async Task<ActionResult> EditarProducto(int id, Producto producto)
         {
@@ -47,7 +47,6 @@ namespace parcial2Max.Controllers
             return NoContent();
         }
 
-        // 4 - Eliminar producto
         [HttpDelete("{id}")]
         public async Task<ActionResult> EliminarProducto(int id)
         {
@@ -59,7 +58,7 @@ namespace parcial2Max.Controllers
             return NoContent();
         }
 
-        // GET por Id
+    
         [HttpGet("{id}")]
         public async Task<ActionResult<Producto>> GetProductoPorId(int id)
         {
@@ -72,14 +71,14 @@ namespace parcial2Max.Controllers
             return producto;
         }
 
-        // 5 - Ordenar por precio
+        
         [HttpGet("ordenar-por-precio")]
         public async Task<ActionResult<IEnumerable<Producto>>> OrdenarPorPrecio()
         {
             return await _context.Productos.OrderBy(p => p.Precio).ToListAsync();
         }
 
-        // 6 - Buscar por nombre
+       
         [HttpGet("buscar")]
         public async Task<ActionResult<IEnumerable<Producto>>> BuscarPorNombre([FromQuery] string nombre)
         {
@@ -88,7 +87,7 @@ namespace parcial2Max.Controllers
                 .ToListAsync();
         }
 
-        // 7 - Listar productos por categoría
+
         [HttpGet("por-categoria/{categoriaId}")]
         public async Task<ActionResult<IEnumerable<Producto>>> ListarPorCategoria(int categoriaId)
         {
@@ -97,7 +96,7 @@ namespace parcial2Max.Controllers
                 .ToListAsync();
         }
 
-        // 8 - Listar productos por proveedor
+    
         [HttpGet("por-proveedor/{proveedorId}")]
         public async Task<ActionResult<IEnumerable<Producto>>> ListarPorProveedor(int proveedorId)
         {
